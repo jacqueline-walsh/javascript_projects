@@ -4,13 +4,41 @@ const count = document.getElementById('count');
 const total = document.getElementById('total');
 const movieSelect = document.getElementById('movie');
 
-const ticketPrice = +movieSelect.value;
+let ticketPrice = +movieSelect.value;
 
 // Add EventListener
 
-container.addEventListener('click', (e) => {
+// movie selected event
+movieSelect.addEventListener('change', e => {
+    ticketPrice = +e.target.value;
+    updateSelectedCount();
+});
+
+// seat click event
+container.addEventListener('click', e => {
     if (e.target.classList.contains('seat') && !e.target.classList.contains('occupied')) {
         e.target.classList.toggle('selected');
+        updateSelectedCount();
     }
 });
+
+
+// Functions 
+
+// update total seat count
+function updateSelectedCount() {
+    const selectedSeats = document.querySelectorAll('.row .seat.selected');
+
+// copy selected seats into an array
+    const seatsIndex = [...selectedSeats];
+// Map through Array
+
+// return a new array indexes
+
+
+    const selectedSeatsCount = selectedSeats.length;
+    count.innerText = selectedSeatsCount;
+    total.innerText = selectedSeatsCount * ticketPrice;
+}
+
 
