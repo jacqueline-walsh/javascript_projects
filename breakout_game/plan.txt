@@ -1,0 +1,2 @@
+1.  Create canvas context
+2.  Create and draw ball
